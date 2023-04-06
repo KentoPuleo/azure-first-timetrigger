@@ -11,7 +11,7 @@ namespace Company.Function
     public class TimerTrigger2
     {
         [FunctionName("TimerTrigger2")]
-        public static void Run([TimerTrigger("0 */2 * * * *")]TimerInfo myTimer, ILogger log)
+        public static void Run([TimerTrigger("0 */20 * * * *")]TimerInfo myTimer, ILogger log)
         {
             var config = new ConfigurationBuilder()
             .AddEnvironmentVariables()
@@ -31,12 +31,9 @@ namespace Company.Function
                 DateTime dateValue = (DateTime)reader["date"];
                 log.LogInformation(dateValue.ToString());
             }
-
             reader.Close();
         }
         Console.WriteLine("Data retrieval process is complete.");
-
-        
         }
     }
 }
